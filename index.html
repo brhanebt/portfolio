@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Brhane Bahrishum Teka - Full Stack Java Developer</title>
+        <base href="/">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <header>
+            <div class="container contact-details">
+                <h1>Brhane Bahrishum Teka</h1>
+                <h4>Full Stack Java Developer</h4>
+                <div class="contact-details">
+                    <span class="contact-item"><i class="fa fa-map-marker"></i> Columbia, MO</span>
+                    <span class="contact-item"><i class="fa fa-phone"></i> 641-451-7985</span>
+                    <a href="mailto:brhane.teka3@gmail.com" target="_blank" class="contact-item"><i class="fa fa-envelope"> brhane.teka3@gmail.com</i></a>
+                    <a href="https://www.linkedin.com/in/brhaneteka/" target="_blank" class="contact-item"><i class="fa fa-linkedin-square"></i> LinkedIn</a>
+                    <a href="https://github.com/brhanebt" target="_blank" class="contact-item"><i class="fa fa-github"> Github</i></a>
+
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <section>
+                <h3>Professional Summary</h3>
+                <p id="summary"></p>
+            </section>
+            <section class="mb-4">
+                <h3>Technical Skills</h3>
+                <div id="skills-grid">
+                </div>
+            </section>
+            <section class="mb-4">
+                <h3>Work Experience</h3>
+                <div id="work-experience"></div>
+            </section>
+            <section>
+                <h3>Education</h3>
+                <div id="education-background"></div>
+            </section>
+            <section>
+                <h2>Locations</h2>
+                <div id="map" class="border"></div>
+            </section>
+        </div>
+        <footer>
+
+        </footer>
+    </body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .fa-map-marker {
+            color: red;
+        }
+        .contact-details{
+            text-align: center;
+            background-color: rgb(163, 163, 199);
+        }
+        .contact-item{
+            padding-right: 10px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+                        box-sizing: border-box;
+
+        }
+        .work-experience h3,
+        .education-item h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        #map { height: 400px; margin-bottom: 20px; }
+    </style>
+    <script>
+        const data = {
+            summary: "Full Stack Java Developer with more than 7 years of experience in IT, Computer Science & Geospatial Technologies. Expertise in developing, & troubleshooting applications using Java, Angular, Spring Boot, SQL and PL/SQL, Integrate Microservices to AWS S3, SNS, Lambda, & CloudWatch events, as well as monitor application health using Dynatrace, Splunk, New Relic.",
+            skills:[
+                {category: "Frontend",technologies:"Angular, Bootstrap, HTML, CSS"},
+                {category: "Backend and Testing",technologies:"Java, Spring Boot, Spring, Junit"},
+                {category: "Databases",technologies:"Oracle, PostgreSQL, MongoDB"},
+                {category: "DevOps and Cloud", technologies:"Docker, Github, Bitbucket, Maven, Gradle, Postman, AWS"}
+            ],
+            work:[
+                {
+                    title:"Full Stack Java Developer",
+                    company:"TCS",
+                    period: "Mar 2024 - May 2025",
+                    location:"Columbia, MO",
+                    achievements: [            
+                        "Member of Legacy UI modernization team to migrate from JSP, Struts to Java 11, Spring Boot, DB2 and Angular 16",
+                        "Integrate, test, build and deploy both frontend and backend features",
+                        "Meet and discuss with team members on daily, weekly and monthly status updates"
+                    ]
+                }, {
+                    title:"Java Developer",
+                    company:"TCS",
+                    period: "Jan 2022 - Mar 2023",
+                    location:"Irving, TX",
+                    achievements: [            
+                        "Worked on enhancing Risk management using Java 8, Spring Boot, SonarQube",
+                        "Write unit tests using Junit, Spring Boot Test",
+                        "Deploy changes into Dev, UAT environments using Git, bitbucket, Jenkins",
+                        "Troubleshoot production issues using logs and lower environment tests",
+                        "Analyze data related user issues using SQL statements & Oracle database"
+                    ]
+                }, {
+                    title:"Backend Developer",
+                    company:"Sngular People LLC",
+                    period: "Jul 2020 - Jan 2021",
+                    location:"Fairfield , IA (Remote)",
+                    achievements: [            
+                        "Developed account opening microservices features using Java 8/11, Spring Boot, Spring Web fl ux, Kafka, Avro, and AWS S3",
+                        "Perform tests using Junit, Spring Boot Test, postman, and mock services",
+                        "Deploy to RND, UAT & QA env’ts using docker, Jenkins, Bitbucket, & Openshift",
+                        "Participate in agile daily stand ups, code review & platform re-architecture",
+                        "Working on researching possible solution to various bugs & issues or spikes"
+                    ]
+                }
+            ],
+            education:[
+                {
+                    degree: "MS Computer Science",
+                    institution: "Maharishi International University",
+                    period: "2019 - 2022",
+                    location: "Fairfield, IA",
+                    details: "Focus on Enterprise application and modern web applications."
+                }, {
+                    degree: "MS Geospatial Technologies",
+                    institution: "University of Münster",
+                    period: "2017 - 2019",
+                    location: "Münster, Germany, Castellon De la plana, Spain",
+                    details: "Specialized in spatial databases and GIS."
+                }, {
+                    degree: "B.Sc Information Technology",
+                    institution: "Mekelle Institute of Technology",
+                    period: "2009 - 2014",
+                    location: "Mekelle, Tigray, Ethiopia",
+                    details: "Focus on Databases, Networking, Programming and information technology in general."
+                },
+            ],
+            locations: [
+                { name: "Columbia, MO", coordinates: [38.9517, -92.3341] },
+                { name: "Fairfield, IA", coordinates: [41.0076, -91.9637] },
+                { name: "Irving, Tx", coordinates: [32.8136, -96.9547] },
+                { name: "Münster, Germany", coordinates: [51.9607, 7.6261] },
+                { name: "Adigrat, Tigray, Ethiopia", coordinates: [14.2775, 39.4614]},
+                { name: "Mekelle, Tigray, Ethiopia", coordinates: [13.4963, 39.4743]}
+            ]
+        };
+        document.getElementById("summary").textContent=data.summary;
+
+        const skillsElement = document.getElementById("skills-grid");
+        data.skills.forEach(skill=>{
+            div=document.createElement("div");
+            div.className="skill-category";
+            div.innerHTML=`<h4>${skill.category}</h4><p>${skill.technologies}</p>`;
+            skillsElement.appendChild(div);
+        });
+
+        const workExperiencesElement = document.getElementById("work-experience");
+        data.work.forEach(job=>{
+            const workExperienceDiv = document.createElement("div");
+            workExperienceDiv.className='experience';
+            workExperienceDiv.innerHTML=`
+                    <h3>${job.title} - ${job.company}</h3>
+                    <p class="text-muted">${job.period} | ${job.location}</p>
+                    <ul>${job.achievements.map(a => `<li>${a}</li>`).join('')}</ul>
+                `;
+            workExperiencesElement.appendChild(workExperienceDiv);
+        });
+
+        const educationBackgroundElement = document.getElementById("education-background");
+        data.education.forEach(edu=>{
+            const educationBackgroundDiv = document.createElement("div");
+            educationBackgroundDiv.className='education';
+            educationBackgroundDiv.innerHTML=`
+                    <h3>${edu.degree} - ${edu.institution}</h3>
+                    <p class="text-muted">${edu.period} | ${edu.location}</p>
+                    <p>${edu.details}</p>
+                `;
+            educationBackgroundElement.appendChild(educationBackgroundDiv);
+        });
+
+        const map = L.map('map').setView([40, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        data.locations.forEach(loc => {
+            L.marker(loc.coordinates).addTo(map).bindPopup(loc.name);
+        });
+    </script>
+</html>

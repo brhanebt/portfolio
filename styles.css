@@ -1,0 +1,16 @@
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.fa-map-marker { /* Updated to correct Font Awesome 4.7 class */
+  font-size: 48px;
+  color: red;
+}
